@@ -1,0 +1,630 @@
+@charset "UTF-8";
+
+:root {
+  --navy:    #092140;
+  --purple:  #422C73;
+  --magenta: #A63F82;
+  --orange:  #EA5747;
+  --crimson: #D7475E;
+
+  /* ---- TEMA CLARO (padrão) ---- */
+  color-scheme: light;
+
+  --text:      #092140;
+  --text-soft: rgba(9, 33, 64, 0.72);
+
+
+  --glass:        rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(66, 44, 115, 0.16);
+  --glass-hover:  rgba(255, 255, 255, 0.92);
+
+  --radius: 18px;
+
+  --bg-1: #fcfaff;
+  --bg-2: #f2ebfb;
+  --bg-3: #fde8e3;
+  --glow: rgba(234, 87, 71, 0.16);
+  --header-bg: rgba(252, 250, 255, 0.72);
+  --wave: 0.32; /* intensidade das ondas (1 = normal) */
+
+  /* itens que mudam de cor entre claro e escuro */
+  --shadow:       0 10px 40px rgba(66, 44, 115, 0.12);
+  --shadow-hover: 0 18px 50px rgba(66, 44, 115, 0.2), 0 0 28px rgba(234, 87, 71, 0.18);
+  --nav-hover:    var(--navy);
+  --placeholder:  rgba(9, 33, 64, 0.45);
+  --icon-filter:  none; /* ícone preto do GitHub: no claro fica como está */
+  --title-gradient: linear-gradient(90deg, var(--navy) 0%, var(--purple) 45%, var(--magenta) 100%);
+  --ok:   #1a8f5a; /* mensagem de sucesso do formulário */
+  --erro: #c0334a; /* mensagem de erro do formulário */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Fitas de seda do fundo (SVG embutido, uma por cor) */
+  --ribbon-purple: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 600' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23422C73' stop-opacity='.9'/%3E%3Cstop offset='1' stop-color='%23422C73' stop-opacity='.1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M0 300 C266 180,533 180,800 300 S1333 420,1600 300 L1600 440 C1333 560,1067 560,800 440 S266 320,0 440 Z'/%3E%3C/svg%3E");
+  --ribbon-magenta: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 600' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23A63F82' stop-opacity='.9'/%3E%3Cstop offset='1' stop-color='%23A63F82' stop-opacity='.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M0 260 C266 100,533 100,800 260 S1333 420,1600 260 L1600 360 C1333 520,1067 520,800 360 S266 200,0 360 Z'/%3E%3C/svg%3E");
+  --ribbon-crimson: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 600' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23D7475E' stop-opacity='.9'/%3E%3Cstop offset='1' stop-color='%23D7475E' stop-opacity='.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M0 300 C266 440,533 440,800 300 S1333 160,1600 300 L1600 400 C1333 260,1067 260,800 400 S266 540,0 400 Z'/%3E%3C/svg%3E");
+  --ribbon-orange: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 600' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23EA5747' stop-opacity='.9'/%3E%3Cstop offset='1' stop-color='%23EA5747' stop-opacity='.05'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M0 320 C266 220,533 220,800 320 S1333 420,1600 320 L1600 490 C1333 590,1067 590,800 490 S266 390,0 490 Z'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================
+   MODO ESCURO — ativado pelo botão (html[data-theme="dark"])
+   Fundo quase preto, vidro mais discreto e ondas mais suaves.
+   (O tema padrão, claro, fica no :root lá em cima.)
+   ========================================================== */
+:root[data-theme="dark"] {
+  --bg-1: #03070f;
+  --bg-2: #0a0a1b;
+  --bg-3: #170f2c;
+  --glow: rgba(215, 71, 94, 0.14);
+  --header-bg: rgba(3, 7, 15, 0.62);
+
+  --text:      #ecebf3;
+  --text-soft: rgba(236, 235, 243, 0.66);
+
+  --glass:        rgba(255, 255, 255, 0.045);
+  --glass-strong: rgba(0, 0, 0, 0.42);
+  --glass-border: rgba(255, 255, 255, 0.11);
+  --glass-hover:  rgba(255, 255, 255, 0.11);
+
+  --wave: 0.55;
+
+  color-scheme: dark;
+  --shadow:       0 10px 40px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 18px 50px rgba(0, 0, 0, 0.3), 0 0 28px rgba(234, 87, 71, 0.2);
+  --nav-hover:    #fff;
+  --placeholder:  rgba(246, 242, 251, 0.5);
+  --icon-filter:  invert(1); /* deixa o ícone preto do GitHub branco */
+  --title-gradient: linear-gradient(90deg, #ffffff 0%, #ffc2b8 55%, var(--orange) 100%);
+  --ok:   #4fd39a;
+  --erro: #ff7a8c;
+}
+
+/* ==========================================================
+   BASE
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* fundo base: azul-marinho que desce para o roxo, com um brilho quente embaixo */
+  background:
+    radial-gradient(ellipse at 85% 105%, var(--glow), transparent 55%),
+    linear-gradient(165deg, var(--bg-1) 0%, var(--bg-2) 62%, var(--bg-3) 100%);
+  background-attachment: fixed;
+  background-color: var(--bg-1);
+  overflow-x: hidden; /* as ondas são mais largas que a tela: evita rolagem lateral no celular */
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; margin: 0; padding: 0; }
+::selection { background: var(--orange); color: #fff; }
+
+/* Evita que o menu fixo cubra o título ao clicar num link do menu */
+main, section { scroll-margin-top: 5rem; }
+
+/* ==========================================================
+   FUNDO ANIMADO — fitas de seda onduladas (estilo tema do PS4)
+   São 4 camadas (pseudo-elementos) com velocidades diferentes.
+   Para mudar: ajuste --tile (largura/velocidade), top/bottom/height
+   (posição), opacity (intensidade) e a duração das animações.
+   ========================================================== */
+html::before, html::after, body::before, body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  width: calc(100% + var(--tile));
+  background-repeat: repeat-x;
+  background-size: var(--tile) 100%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* camada 1 — roxo, ao fundo e no alto */
+html::before {
+  --tile: 2000px;
+  top: -4vh; height: 62vh;
+  background-image: var(--ribbon-purple);
+  opacity: calc(0.9 * var(--wave));
+  z-index: -4;
+  animation: seda-desliza 90s linear infinite, seda-flutua 17s ease-in-out infinite alternate;
+}
+/* camada 2 — magenta, meio do alto */
+body::before {
+  --tile: 2400px;
+  top: 14vh; height: 58vh;
+  background-image: var(--ribbon-magenta);
+  opacity: calc(0.6 * var(--wave));
+  z-index: -3;
+  animation: seda-desliza 65s linear infinite reverse, seda-flutua 13s ease-in-out infinite alternate;
+}
+/* camada 3 — vermelho-rosado, parte do meio */
+body::after {
+  --tile: 3000px;
+  top: 34vh; height: 52vh;
+  background-image: var(--ribbon-crimson);
+  opacity: calc(0.45 * var(--wave));
+  z-index: -2;
+  animation: seda-desliza 80s linear infinite, seda-flutua 19s ease-in-out infinite alternate-reverse;
+}
+/* camada 4 — laranja, na parte de baixo */
+html::after {
+  --tile: 1800px;
+  bottom: -10vh; height: 56vh;
+  background-image: var(--ribbon-orange);
+  opacity: calc(0.38 * var(--wave));
+  z-index: -1;
+  animation: seda-desliza 50s linear infinite reverse, seda-flutua 15s ease-in-out infinite alternate;
+}
+
+@keyframes seda-desliza {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(var(--tile) * -1), 0, 0); }
+}
+@keyframes seda-flutua {
+  from { translate: 0 -3vh; }
+  to   { translate: 0 3vh; }
+}
+
+/* ==========================================================
+   CABEÇALHO / MENU
+   ========================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 5vw, 3rem);
+  background: var(--header-bg);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.nav-links a {
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--orange), var(--crimson));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-links a:hover { color: var(--nav-hover); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* Botão de alternar tema (fica no header, depois do <nav>) */
+.tema-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--text);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+.tema-toggle:hover {
+  transform: rotate(18deg);
+  border-color: var(--orange);
+  background: var(--glass-hover);
+}
+
+/* ==========================================================
+   INÍCIO (hero) — <main class="cabeçalho">
+   ========================================================== */
+.cabeçalho {
+  min-height: 90vh;
+  min-height: 90svh; /* altura "real" no celular, sem contar a barra do navegador */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+/* Avatar em molde circular: o círculo corta a imagem, o degradê aparece atrás do boneco
+   (se a imagem tiver fundo transparente) e o anel de vidro faz a moldura */
+.cabeçalho img {
+  width: min(230px, 58vw);
+  aspect-ratio: 1;           /* quadrado -> vira círculo com o border-radius */
+  height: auto;
+  object-fit: contain;       /* mostra a imagem INTEIRA (sem cortar o queixo); o que sobra fica preto */
+  object-position: center;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background: #000;          /* fundo preto atrás do personagem */
+  border: 4px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 8px var(--glass), 0 18px 44px rgba(234, 87, 71, 0.35);
+  animation: avatar-flutua 6s ease-in-out infinite alternate;
+}
+@keyframes avatar-flutua {
+  from { transform: translateY(-6px); }
+  to   { transform: translateY(8px); }
+}
+
+.cabeçalho h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  background-image: var(--title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cabeçalho p {
+  margin: 0;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================
+   TÍTULOS DAS SEÇÕES
+   ========================================================== */
+h2 {
+  margin: 0 0 2.5rem;
+  text-align: center;
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  line-height: 1.2;
+}
+h2::after {
+  content: "";
+  display: block;
+  width: 64px; height: 4px;
+  margin: 0.8rem auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--orange), var(--crimson));
+}
+
+/* ==========================================================
+   SOBRE
+   ========================================================== */
+.section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.section p {
+  margin: 0;
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+  line-height: 1.85;
+  color: var(--text-soft);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: var(--shadow);
+}
+
+.skills {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* a última linha fica centralizada */
+  gap: 1rem;
+}
+
+.skill-card {
+  flex: 0 1 136px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.6rem 0.8rem 1.3rem;
+  text-align: center;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.skill-card img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  /* o "pulinho" no final da curva dá um efeito elástico ao crescer */
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.skill-card span {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  background: var(--glass-hover);
+  border-color: rgba(234, 87, 71, 0.65);
+  box-shadow: var(--shadow-hover);
+}
+.skill-card:hover img { transform: scale(1.25); } /* quanto o ícone cresce: mude o 1.25 */
+.skill-card:hover span { color: var(--text); }
+
+/* GitHub: o ícone original é preto; no modo escuro o filtro (--icon-filter) deixa ele branco */
+.skill-card img.icone-claro { filter: var(--icon-filter); }
+
+/* ==========================================================
+   PROJETOS — cards transparentes (vidro)
+   ========================================================== */
+.projetos {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.projetos-caixa {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.projetos-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1.5rem;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.projetos-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.1rem;
+  transition: transform 0.4s ease;
+}
+
+.info-projetos {
+  margin: 0 0.4rem 0.5rem;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.paragrafo-projetos {
+  flex: 1;                 /* empurra o botão do GitHub para o fim do card */
+  margin: 0 0.4rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+
+.projetos-card:hover {
+  transform: translateY(-8px);
+  background: var(--glass-hover);
+  border-color: rgba(234, 87, 71, 0.65);
+  box-shadow: var(--shadow-hover);
+}
+.projetos-card:hover img { transform: scale(1.04); }
+
+/* ==========================================================
+   CONTATO
+   ========================================================== */
+.contatos {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 7rem;
+}
+
+.formulario-contato {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: var(--shadow);
+}
+
+.campo-form,
+.text-form {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.text-form { min-height: 170px; resize: vertical; }
+
+.campo-form::placeholder,
+.text-form::placeholder { color: var(--placeholder); }
+
+.campo-form:focus,
+.text-form:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(234, 87, 71, 0.28);
+}
+
+/* Botão (para quando você adicionar um <button> ao formulário) */
+.formulario-contato button,
+.botao {
+  align-self: flex-start;
+  padding: 0.85rem 1.6rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, var(--orange), var(--crimson));
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.formulario-contato button:hover,
+.botao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(234, 87, 71, 0.4);
+}
+
+/* ==========================================================
+   ÍCONES (GitHub, LinkedIn, e-mail) E LINKS
+   Os desenhos ficam num "sprite" no começo do <body>; eles herdam
+   a cor do texto (currentColor), então funcionam no claro e no escuro.
+   ========================================================== */
+.icone {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: currentColor;
+}
+
+/* botão "Ver no GitHub" dentro de cada card de projeto */
+.projeto-link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0.4rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+.projeto-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--orange);
+  background: var(--glass-hover);
+}
+
+/* fileira de ícones na seção de contatos */
+.contato-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.contato-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 112px;
+  padding: 1.2rem 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-soft);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+.contato-link .icone {
+  width: 34px;
+  height: 34px;
+  color: var(--text);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+}
+.contato-link:hover {
+  transform: translateY(-4px);
+  color: var(--text);
+  background: var(--glass-hover);
+  border-color: rgba(234, 87, 71, 0.65);
+  box-shadow: var(--shadow-hover);
+}
+.contato-link:hover .icone { transform: scale(1.18); color: var(--orange); }
+
+/* mensagem de status do formulário (enviando / sucesso / erro) */
+.form-status {
+  margin: 0;
+  min-height: 1.5em;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+.form-status[data-estado="ok"]   { color: var(--ok); }
+.form-status[data-estado="erro"] { color: var(--erro); }
+
+.formulario-contato button[disabled] { opacity: 0.65; cursor: wait; transform: none; box-shadow: none; }
+
+/* campo-isca anti-spam: fica fora da tela, só robôs o preenchem */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ==========================================================
+   RESPONSIVO
+   ========================================================== */
+@media (max-width: 720px) {
+  .header { flex-direction: column; gap: 0.6rem; padding: 0.8rem 1rem; }
+  .nav-links { gap: 1.1rem; }
+  .nav-links a { font-size: 0.88rem; }
+  .cabeçalho { min-height: 80vh; min-height: 80svh; }
+  body::after { display: none; } /* uma onda a menos no celular, para ficar mais leve */
+  .section, .projetos, .contatos { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  main, section { scroll-margin-top: 7rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html::before, html::after, body::before, body::after,
+  .cabeçalho img { animation: none; }
+  .projetos-card, .projetos-card img { transition: none; }
+}
