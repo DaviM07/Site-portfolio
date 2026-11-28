@@ -45,4 +45,4 @@ Depois acesse `http://localhost:8000`.
 
 - GitHub: [@DaviM07](https://github.com/DaviM07)
 - LinkedIn: [Davi Moura](https://www.linkedin.com/in/davi-moura-63a43a41b/)
-- Ou use o formulário de contato direto no [site](https://davim07.github.io/Site-portfolio/#contato)
+  
